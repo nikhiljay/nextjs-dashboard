@@ -1,7 +1,7 @@
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
-import Account from '../components/Account'
+import Dashboard from '../components/Dashboard'
 
 const Home = () => {
   const session = useSession()
@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <div className="container max-w-full">
       {!session ? (
-        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
+        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
       ) : (
-        <Account session={session} />
+        <Dashboard session={session} />
       )}
     </div>
   )
