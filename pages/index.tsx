@@ -1,9 +1,9 @@
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
-import Dashboard from '../components/Dashboard'
+import Home from './home'
 
-const Home = () => {
+const Index = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
 
@@ -12,10 +12,10 @@ const Home = () => {
       {!session ? (
         <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />
       ) : (
-        <Dashboard />
+        <Home />
       )}
     </div>
   )
 }
 
-export default Home
+export default Index

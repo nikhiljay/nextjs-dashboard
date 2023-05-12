@@ -23,7 +23,6 @@ const navigation = [
   { name: 'Activity', href: '#', icon: SignalIcon, current: false },
   { name: 'Domains', href: '#', icon: GlobeAltIcon, current: false },
   { name: 'Usage', href: '#', icon: ChartBarSquareIcon, current: false },
-  { name: 'Settings', href: '/settings', icon: Cog6ToothIcon, current: false },
 ]
 
 const teams = [
@@ -157,7 +156,7 @@ export default function Dashboard({ children }) {
                         </li>
                         <li className="mt-auto">
                           <a
-                            href="#"
+                            href="/settings"
                             className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
                           >
                             <Cog6ToothIcon
@@ -247,7 +246,7 @@ export default function Dashboard({ children }) {
                 </li>
                 <li className="mt-auto">
                   <a
-                    href="#"
+                    href="/settings"
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
                   >
                     <Cog6ToothIcon
