@@ -20,7 +20,7 @@ const navigation = [
   { name: 'Activity', href: '#', icon: SignalIcon, current: false },
   { name: 'Domains', href: '#', icon: GlobeAltIcon, current: false },
   { name: 'Usage', href: '#', icon: ChartBarSquareIcon, current: false },
-  { name: 'Settings', href: '#', icon: Cog6ToothIcon, current: true },
+  { name: 'Settings', href: '/settings', icon: Cog6ToothIcon, current: true },
 ]
 const teams = [
   { id: 1, name: 'Planetaria', href: '#', initial: 'P', current: false },
@@ -33,19 +33,11 @@ const userNavigation = [
   { name: 'Sign out', href: '#' },
 ]
 
-const secondaryNavigation = [
-  { name: 'Account', href: '#', current: true },
-  { name: 'Notifications', href: '#', current: false },
-  { name: 'Billing', href: '#', current: false },
-  { name: 'Teams', href: '#', current: false },
-  { name: 'Integrations', href: '#', current: false },
-]
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Dashboard({ session, children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -349,7 +341,8 @@ export default function Example() {
             </div>
           </div>
 
-          <Settings />
+          {children}
+
         </div>
       </div>
   )
