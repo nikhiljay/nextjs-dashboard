@@ -1,6 +1,5 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import { Database } from '../types/supabase'

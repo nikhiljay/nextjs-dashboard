@@ -79,7 +79,7 @@ export default function Settings({ session }) {
                       name="first-name"
                       id="first-name"
                       autoComplete="given-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export default function Settings({ session }) {
                       name="last-name"
                       id="last-name"
                       autoComplete="family-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export default function Settings({ session }) {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function Settings({ session }) {
                     Username
                   </label>
                   <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-500">
+                    <div className="flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-1 focus-within:ring-indigo-500">
                       <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
                         example.com/
                       </span>
@@ -155,7 +155,7 @@ export default function Settings({ session }) {
                     <select
                       id="timezone"
                       name="timezone"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     >
                       <option>Pacific Standard Time</option>
                       <option>Eastern Standard Time</option>
@@ -201,7 +201,7 @@ export default function Settings({ session }) {
                       name="password"
                       type="password"
                       autoComplete="current-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -219,7 +219,7 @@ export default function Settings({ session }) {
                       name="new_password"
                       type="password"
                       autoComplete="new-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -237,7 +237,7 @@ export default function Settings({ session }) {
                       name="confirm_password"
                       type="password"
                       autoComplete="new-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export default function Settings({ session }) {
                       name="password"
                       type="password"
                       autoComplete="current-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
