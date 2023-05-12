@@ -8,7 +8,7 @@ const Home = () => {
   const supabase = useSupabaseClient()
 
   return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+    <div className="container max-w-full">
       {!session ? (
         <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
       ) : (
