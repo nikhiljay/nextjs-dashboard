@@ -12,7 +12,7 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import Dashboard from "../components/dashboard";
+import Dashboard from "../components/Dashboard";
 
 const secondaryNavigation = [
   { name: "Account", href: "#", current: true },

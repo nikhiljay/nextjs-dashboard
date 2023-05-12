@@ -1,10 +1,13 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
-import Settings from './Settings'
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
+import { Database } from '../types/supabase'
 import {
   ChartBarSquareIcon,
   Cog6ToothIcon,
-  FolderIcon,
+  HomeIcon,
   GlobeAltIcon,
   ServerIcon,
   SignalIcon,
@@ -15,30 +18,32 @@ import {
 import { Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const navigation = [
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+  { name: 'Home', href: '/home', icon: HomeIcon, current: false },
   { name: 'Deployments', href: '#', icon: ServerIcon, current: false },
   { name: 'Activity', href: '#', icon: SignalIcon, current: false },
   { name: 'Domains', href: '#', icon: GlobeAltIcon, current: false },
   { name: 'Usage', href: '#', icon: ChartBarSquareIcon, current: false },
-  { name: 'Settings', href: '/settings', icon: Cog6ToothIcon, current: true },
+  { name: 'Settings', href: '/settings', icon: Cog6ToothIcon, current: false },
 ]
+
 const teams = [
   { id: 1, name: 'Planetaria', href: '#', initial: 'P', current: false },
   { id: 2, name: 'Protocol', href: '#', initial: 'P', current: false },
   { id: 3, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
 ]
 
-const userNavigation = [
-  { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Dashboard({ session, children }) {
+export default function Dashboard({ children }) {
+  const supabase = useSupabaseClient<Database>()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const userNavigation = [
+    { name: 'Settings', href: '/settings' },
+    { name: 'Sign out', href: '/', onClick: () => supabase.auth.signOut()},
+  ]
 
   return (
     <div>
@@ -321,18 +326,13 @@ export default function Dashboard({ session, children }) {
                     <Menu.Items className="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <a
-                              href={item.href}
-                              className={classNames(
-                                active ? 'bg-gray-50' : '',
-                                'block px-3 py-1 text-sm leading-6 text-gray-900'
-                              )}
-                            >
-                              {item.name}
-                            </a>
-                          )}
-                        </Menu.Item>
+                        {({ active }) => (
+                          <Link href={item.href} onClick={item.onClick} className={classNames(
+                            active ? 'bg-gray-50' : '',
+                            'block px-3 py-1 text-sm leading-6 text-gray-900'
+                          )}>{item.name}</Link>
+                        )}
+                      </Menu.Item>
                       ))}
                     </Menu.Items>
                   </Transition>
