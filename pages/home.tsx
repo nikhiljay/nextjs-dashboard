@@ -81,15 +81,15 @@ export default function Home() {
 
   return (
     <Dashboard>
-      <main>
-        <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 pt-16 sm:px-6 md:grid-cols-3 lg:px-8">
+      <main className="px-4 pt-12 sm:px-6 md:grid-cols-3 lg:px-8">
+        <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10">
           <div>
             <h1 className="font-semibold leading-7 text-gray-700 text-2xl">
-              Welcome back, John
+              Overview
             </h1>
           </div>
         </div>
-        <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 px-4 sm:px-6 lg:px-8 pt-4">
+        <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 pt-2">
           {stats.map((item) => (
             <div
               key={item.id}
@@ -154,7 +154,7 @@ export default function Home() {
             </div>
           ))}
         </dl>
-        <div className="px-4 sm:px-6 lg:px-8 pt-12">
+        <div className="pt-10">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <h1 className="text-base font-semibold leading-6 text-gray-900">
