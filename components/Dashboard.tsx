@@ -12,28 +12,14 @@ import {
   Cog6ToothIcon,
   HomeIcon,
   GlobeAltIcon,
-  ServerIcon,
   SignalIcon,
   XMarkIcon,
   BellIcon,
   ChevronDownIcon,
+  CalendarDaysIcon,
 } from "@heroicons/react/24/outline";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
-
-const navigation = [
-  { name: "Home", href: "/home", icon: HomeIcon, current: false },
-  { name: "Deployments", href: "#", icon: ServerIcon, current: false },
-  { name: "Activity", href: "#", icon: SignalIcon, current: false },
-  { name: "Domains", href: "#", icon: GlobeAltIcon, current: false },
-  { name: "Usage", href: "#", icon: ChartBarSquareIcon, current: false },
-];
-
-const teams = [
-  { id: 1, name: "Planetaria", href: "#", initial: "P", current: false },
-  { id: 2, name: "Protocol", href: "#", initial: "P", current: false },
-  { id: 3, name: "Tailwind Labs", href: "#", initial: "T", current: false },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -43,6 +29,45 @@ export default function Dashboard({ children }) {
   const router = useRouter();
   const supabase = useSupabaseClient<Database>();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const navigation = [
+    {
+      name: "Home",
+      href: "/home",
+      icon: HomeIcon,
+      current: router.pathname === "/home",
+    },
+    {
+      name: "Schedule",
+      href: "/schedule",
+      icon: CalendarDaysIcon,
+      current: router.pathname === "/schedule",
+    },
+    {
+      name: "Activity",
+      href: "/activity",
+      icon: SignalIcon,
+      current: router.pathname === "/activity",
+    },
+    {
+      name: "Domains",
+      href: "/domains",
+      icon: GlobeAltIcon,
+      current: router.pathname === "/domains",
+    },
+    {
+      name: "Usage",
+      href: "/usage",
+      icon: ChartBarSquareIcon,
+      current: router.pathname === "/usage",
+    },
+  ];
+
+  const teams = [
+    { id: 1, name: "Planetaria", href: "#", initial: "P", current: false },
+    { id: 2, name: "Protocol", href: "#", initial: "P", current: false },
+    { id: 3, name: "Tailwind Labs", href: "#", initial: "T", current: false },
+  ];
 
   const userNavigation = [
     { name: "Settings", href: "/settings" },

@@ -8,9 +8,9 @@ const secondaryNavigation = [
   { name: "Integrations", href: "#", current: false },
 ];
 
-export default function Settings({ session }) {
+export default function Settings() {
   return (
-    <Dashboard session={session}>
+    <Dashboard>
       <main>
         <header className="border-b border-gray-200">
           {/* Secondary navigation */}

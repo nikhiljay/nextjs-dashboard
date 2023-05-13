@@ -4,7 +4,7 @@ import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { AppProps } from "next/app";
 
-function MyApp({
+function App({
   Component,
   pageProps,
 }: AppProps<{
@@ -16,10 +16,9 @@ function MyApp({
     <SessionContextProvider
       supabaseClient={supabase}
       initialSession={pageProps.initialSession}
-      className="h-full"
     >
       <Component {...pageProps} />
     </SessionContextProvider>
   );
 }
-export default MyApp;
+export default App;
