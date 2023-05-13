@@ -50,7 +50,7 @@ export default function Login() {
               Sign in to your account
             </h2>
             <p className="mt-2 text-sm leading-6 text-gray-500">
-              Not a member?{" "}
+              Not a Vitalize provider?{" "}
               <a
                 href="#"
                 className="font-semibold text-vitalize-primary hover:text-vitalize-secondary"
