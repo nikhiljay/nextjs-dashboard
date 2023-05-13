@@ -152,7 +152,7 @@ export default function Dashboard({ children }) {
                         <ul role="list" className="-mx-2 space-y-1">
                           {navigation.map((item) => (
                             <li key={item.name}>
-                              <a
+                              <Link
                                 href={item.href}
                                 className={classNames(
                                   item.current
@@ -171,7 +171,7 @@ export default function Dashboard({ children }) {
                                   aria-hidden="true"
                                 />
                                 {item.name}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -183,7 +183,7 @@ export default function Dashboard({ children }) {
                         <ul role="list" className="-mx-2 mt-2 space-y-1">
                           {teams.map((team) => (
                             <li key={team.name}>
-                              <a
+                              <Link
                                 href={team.href}
                                 className={classNames(
                                   team.current
@@ -203,13 +203,13 @@ export default function Dashboard({ children }) {
                                   {team.initial}
                                 </span>
                                 <span className="truncate">{team.name}</span>
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
                       </li>
                       <li className="mt-auto">
-                        <a
+                        <Link
                           href="/settings"
                           className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-vitalize-primary"
                         >
@@ -218,7 +218,7 @@ export default function Dashboard({ children }) {
                             aria-hidden="true"
                           />
                           Settings
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </nav>
@@ -233,21 +233,21 @@ export default function Dashboard({ children }) {
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
-          <a href="/home" className="flex h-16 shrink-0 items-center">
+          <Link href="/home" className="flex h-16 shrink-0 items-center">
             <img
               className="h-8 w-auto -ml-1"
               src="https://vitalizecare.co/images/logo.svg"
               alt="Vitalize Care"
               draggable="false"
             />
-          </a>
+          </Link>
           <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
               <li>
                 <ul role="list" className="-mx-2 space-y-1">
                   {navigation.map((item) => (
                     <li key={item.name}>
-                      <a
+                      <Link
                         href={item.href}
                         className={classNames(
                           item.current
@@ -266,7 +266,7 @@ export default function Dashboard({ children }) {
                           aria-hidden="true"
                         />
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -278,7 +278,7 @@ export default function Dashboard({ children }) {
                 <ul role="list" className="-mx-2 mt-2 space-y-1">
                   {teams.map((team) => (
                     <li key={team.name}>
-                      <a
+                      <Link
                         href={team.href}
                         className={classNames(
                           team.current
@@ -298,13 +298,13 @@ export default function Dashboard({ children }) {
                           {team.initial}
                         </span>
                         <span className="truncate">{team.name}</span>
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </li>
               <li className="mt-auto">
-                <a
+                <Link
                   href="/settings"
                   className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-vitalize-primary"
                 >
@@ -313,7 +313,7 @@ export default function Dashboard({ children }) {
                     aria-hidden="true"
                   />
                   Settings
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Login() {
   const supabase = useSupabaseClient();
@@ -51,12 +52,12 @@ export default function Login() {
             </h2>
             <p className="mt-2 text-sm leading-6 text-gray-500">
               Not a Vitalize provider?{" "}
-              <a
+              <Link
                 href="#"
                 className="font-semibold text-vitalize-primary hover:text-vitalize-secondary"
               >
                 Sign up today
-              </a>
+              </Link>
             </p>
           </div>
 
@@ -122,12 +123,12 @@ export default function Login() {
                   </div>
 
                   <div className="text-sm leading-6">
-                    <a
+                    <Link
                       href="#"
                       className="font-semibold text-vitalize-primary hover:text-vitalize-secondary"
                     >
                       Forgot password?
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -158,7 +159,7 @@ export default function Login() {
               </div>
 
               <div className="mt-6 grid grid-cols-2 gap-4">
-                <a
+                <Link
                   href="#"
                   className="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
                 >
@@ -173,9 +174,9 @@ export default function Login() {
                   <span className="text-sm font-semibold leading-6">
                     Twitter
                   </span>
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="#"
                   className="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
                 >
@@ -194,7 +195,7 @@ export default function Login() {
                   <span className="text-sm font-semibold leading-6">
                     GitHub
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

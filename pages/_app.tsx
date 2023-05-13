@@ -3,6 +3,8 @@ import { useState } from "react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { AppProps } from "next/app";
+import Dashboard from "../components/Dashboard";
+import { useRouter } from "next/router";
 
 function App({
   Component,
@@ -10,6 +12,7 @@ function App({
 }: AppProps<{
   initialSession: Session;
 }>) {
+  const router = useRouter();
   const [supabase] = useState(() => createBrowserSupabaseClient());
 
   return (
@@ -17,7 +20,13 @@ function App({
       supabaseClient={supabase}
       initialSession={pageProps.initialSession}
     >
-      <Component {...pageProps} />
+      {router.pathname === "/login" ? (
+        <Component {...pageProps} />
+      ) : (
+        <Dashboard>
+          <Component {...pageProps} />
+        </Dashboard>
+      )}
     </SessionContextProvider>
   );
 }
