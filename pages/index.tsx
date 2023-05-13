@@ -7,9 +7,7 @@ const Index = () => {
   const user = useUser();
 
   useEffect(() => {
-    if (!user) {
-      router.push("/login");
-    }
+    user ? router.push("/home") : router.push("/login");
   }, [user]);
 };
 
