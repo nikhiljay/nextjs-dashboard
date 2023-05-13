@@ -73,7 +73,10 @@ function classNames(...classes) {
 
 export default function Home() {
   useEffect(() => {
-    document?.querySelector("body")?.classList.add("bg-gray-100");
+    document?.querySelector("body")?.classList.add("bg-gray-100/50");
+    return () => {
+      document?.querySelector("body")?.classList.remove("bg-gray-100/50");
+    };
   }, []);
 
   return (
@@ -159,7 +162,7 @@ export default function Home() {
               </h1>
               <p className="mt-2 text-sm text-gray-700">
                 A list of all the users in your account including their name,
-                title, email and role.
+                phone, email and role.
               </p>
             </div>
             <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
