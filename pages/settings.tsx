@@ -1,11 +1,11 @@
 import Dashboard from "../components/Dashboard";
 
 const secondaryNavigation = [
-  { name: "Account", href: "#", current: true },
-  { name: "Notifications", href: "#", current: false },
-  { name: "Billing", href: "#", current: false },
-  { name: "Teams", href: "#", current: false },
-  { name: "Integrations", href: "#", current: false },
+  { name: "Account", href: "/settings/account", current: true },
+  { name: "Notifications", href: "/settings/notifications", current: false },
+  { name: "Billing", href: "/settings/billing", current: false },
+  { name: "Teams", href: "/settings/teams", current: false },
+  { name: "Integrations", href: "/settings/integrations", current: false },
 ];
 
 export default function Settings() {
