@@ -13,7 +13,7 @@ function MyApp({
   const [supabase] = useState(() => createBrowserSupabaseClient())
 
   return (
-    <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
+    <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession} className="h-full">
       <Component {...pageProps} />
     </SessionContextProvider>
   )
