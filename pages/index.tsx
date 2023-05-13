@@ -1,21 +1,18 @@
-import { Auth } from '@supabase/auth-ui-react'
-import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { useEffect } from 'react'
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useUser } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router'
 import Home from './home'
 import Dashboard from '../components/Dashboard'
 
 const Index = () => {
-  const session = useSession()
-  const supabase = useSupabaseClient()
+  const router = useRouter()
+  const user = useUser()
 
   useEffect(() => {
-    if (!session) {
-      window.location.href = '/login'
-    } else {
-      window.location.href = '/home'
+    if (!user) {
+      router.push('/login')
     }
-  }, [])
+  }, [user])
 
   return (
     <div className="container max-w-full h-full">

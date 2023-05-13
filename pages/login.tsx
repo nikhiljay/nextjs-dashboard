@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router';
 
 export default function Login() {
   const supabase = useSupabaseClient();
   const user = useUser()
+  const router = useRouter()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,11 +13,11 @@ export default function Login() {
     async function fetchData() {
       if (user) {
         // Redirect to dashboard or homepage if user is already logged in
-        window.location.href = '/home';
+        router.push('/home')
       }
     }
     fetchData()
-  }, [supabase]);
+  }, [user]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ export default function Login() {
       alert('Error logging in: ' + error.message);
     } else {
       // Redirect to dashboard or homepage after successful login
-      window.location.href = '/home';
+      router.push('/home')
     }
   };
 
