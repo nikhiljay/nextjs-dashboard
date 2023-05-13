@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "vitalize-purple": "#7A7ED9",
+        "vitalize-primary": "#7A7ED9",
+        "vitalize-secondary": "#9194DD",
       },
     },
   },

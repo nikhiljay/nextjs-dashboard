@@ -23,7 +23,7 @@ export default function Settings() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className={item.current ? "text-indigo-600" : ""}
+                    className={item.current ? "text-vitalize-primary" : ""}
                   >
                     {item.name}
                   </a>
@@ -79,7 +79,7 @@ export default function Settings() {
                       name="first-name"
                       id="first-name"
                       autoComplete="given-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export default function Settings() {
                       name="last-name"
                       id="last-name"
                       autoComplete="family-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export default function Settings() {
                       name="email"
                       type="email"
                       autoComplete="email"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -128,19 +128,13 @@ export default function Settings() {
                     Username
                   </label>
                   <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-gray-300 focus-within:ring-1 focus-within:ring-indigo-500">
-                      <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-                        example.com/
-                      </span>
-                      <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        autoComplete="username"
-                        className="flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-700 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="janesmith"
-                      />
-                    </div>
+                    <input
+                      id="username"
+                      name="username"
+                      type="text"
+                      autoComplete="username"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
 
@@ -155,7 +149,7 @@ export default function Settings() {
                     <select
                       id="timezone"
                       name="timezone"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     >
                       <option>Pacific Standard Time</option>
                       <option>Eastern Standard Time</option>
@@ -168,7 +162,7 @@ export default function Settings() {
               <div className="mt-8 flex">
                 <button
                   type="submit"
-                  className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  className="rounded-md bg-vitalize-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-vitalize-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vitalize-secondary"
                 >
                   Save
                 </button>
@@ -201,7 +195,7 @@ export default function Settings() {
                       name="password"
                       type="password"
                       autoComplete="current-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -219,7 +213,7 @@ export default function Settings() {
                       name="new_password"
                       type="password"
                       autoComplete="new-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -237,7 +231,7 @@ export default function Settings() {
                       name="confirm_password"
                       type="password"
                       autoComplete="new-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -246,7 +240,7 @@ export default function Settings() {
               <div className="mt-8 flex">
                 <button
                   type="submit"
-                  className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  className="rounded-md bg-vitalize-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-vitalize-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vitalize-secondary"
                 >
                   Save
                 </button>
@@ -280,7 +274,7 @@ export default function Settings() {
                       name="password"
                       type="password"
                       autoComplete="current-password"
-                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -289,7 +283,7 @@ export default function Settings() {
               <div className="mt-8 flex">
                 <button
                   type="submit"
-                  className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  className="rounded-md bg-vitalize-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-vitalize-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vitalize-secondary"
                 >
                   Log out other sessions
                 </button>

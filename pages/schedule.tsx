@@ -164,7 +164,7 @@ export default function Schedule() {
                       !day.isCurrentMonth &&
                       !day.isToday &&
                       "text-gray-400",
-                    day.isToday && !day.isSelected && "text-indigo-600",
+                    day.isToday && !day.isSelected && "text-vitalize-primary",
                     dayIdx === 0 && "rounded-tl-lg",
                     dayIdx === 6 && "rounded-tr-lg",
                     dayIdx === days.length - 7 && "rounded-bl-lg",
@@ -175,7 +175,7 @@ export default function Schedule() {
                     dateTime={day.date}
                     className={classNames(
                       "mx-auto flex h-7 w-7 items-center justify-center rounded-full",
-                      day.isSelected && day.isToday && "bg-indigo-600",
+                      day.isSelected && day.isToday && "bg-vitalize-primary",
                       day.isSelected && !day.isToday && "bg-gray-900"
                     )}
                   >
@@ -186,7 +186,7 @@ export default function Schedule() {
             </div>
             <button
               type="button"
-              className="mt-8 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="mt-8 w-full rounded-md bg-vitalize-primary px-3 py-2 text-sm font-semibold text-white shadow hover:bg-vitalize-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vitalize-primary"
             >
               Add event
             </button>

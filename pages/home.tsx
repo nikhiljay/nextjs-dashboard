@@ -96,7 +96,7 @@ export default function Home() {
               className="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
             >
               <dt>
-                <div className="absolute rounded-md bg-indigo-500 p-3">
+                <div className="absolute rounded-md bg-vitalize-secondary p-3">
                   <item.icon
                     className="h-6 w-6 text-white"
                     aria-hidden="true"
@@ -143,7 +143,7 @@ export default function Home() {
                   <div className="text-sm">
                     <a
                       href="#"
-                      className="font-medium text-indigo-600 hover:text-indigo-500"
+                      className="font-medium text-vitalize-primary hover:text-vitalize-secondary"
                     >
                       View all
                       <span className="sr-only"> {item.name} stats</span>
@@ -168,7 +168,7 @@ export default function Home() {
             <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
               <button
                 type="button"
-                className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="block rounded-md bg-vitalize-primary px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-vitalize-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vitalize-primary"
               >
                 Add user
               </button>
@@ -231,7 +231,7 @@ export default function Home() {
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                             <a
                               href="#"
-                              className="text-indigo-600 hover:text-indigo-900"
+                              className="text-vitalize-primary hover:text-indigo-900"
                             >
                               Edit
                               <span className="sr-only">, {person.name}</span>
