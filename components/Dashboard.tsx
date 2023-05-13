@@ -15,6 +15,7 @@ import {
   ChevronDownIcon,
 } from '@heroicons/react/24/outline'
 import { Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { useRouter } from 'next/router';
 
 const navigation = [
   { name: 'Home', href: '/home', icon: HomeIcon, current: false },
@@ -35,12 +36,17 @@ function classNames(...classes) {
 }
 
 export default function Dashboard({ children }) {
+  const router = useRouter()
   const supabase = useSupabaseClient<Database>()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const userNavigation = [
     { name: 'Settings', href: '/settings' },
-    { name: 'Sign out', href: '/', onClick: () => supabase.auth.signOut()},
+    { name: 'Sign out', href: '/login', onClick: async (event) => {
+      event.preventDefault()
+      await supabase.auth.signOut()
+      router.push('/login')
+    }},
   ]
 
   return (
