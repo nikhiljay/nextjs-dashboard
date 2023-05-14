@@ -56,7 +56,7 @@ export default function Notifications() {
                       id="comments"
                       name="comments"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 rounded border-gray-300 text-vitalize-primary focus:ring-vitalize-primary"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -77,7 +77,7 @@ export default function Notifications() {
                       id="candidates"
                       name="candidates"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 rounded border-gray-300 text-vitalize-primary focus:ring-vitalize-primary"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -98,7 +98,7 @@ export default function Notifications() {
                       id="offers"
                       name="offers"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 rounded border-gray-300 text-vitalize-primary focus:ring-vitalize-primary"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -128,7 +128,7 @@ export default function Notifications() {
                     id="push-everything"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    className="h-4 w-4 border-gray-300 text-vitalize-primary focus:ring-vitalize-primary"
                   />
                   <label
                     htmlFor="push-everything"
@@ -142,7 +142,7 @@ export default function Notifications() {
                     id="push-email"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    className="h-4 w-4 border-gray-300 text-vitalize-primary focus:ring-vitalize-primary"
                   />
                   <label
                     htmlFor="push-email"
@@ -156,7 +156,7 @@ export default function Notifications() {
                     id="push-nothing"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    className="h-4 w-4 border-gray-300 text-vitalize-primary focus:ring-vitalize-primary"
                   />
                   <label
                     htmlFor="push-nothing"
