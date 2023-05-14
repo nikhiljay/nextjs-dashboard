@@ -16,7 +16,12 @@ function App({
   const [supabase] = useState(() => createBrowserSupabaseClient());
 
   const isDashboardPage = (path: string) => {
-    const dashboardBasePaths = ["/home", "/schedule", "/settings"];
+    const dashboardBasePaths = [
+      "/home",
+      "/schedule",
+      "/directory",
+      "/settings",
+    ];
     const dashboardPages = dashboardBasePaths.map(
       (basePath) => new RegExp(`^${basePath}`)
     );

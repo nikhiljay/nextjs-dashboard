@@ -8,7 +8,7 @@ import {
   Cog6ToothIcon,
   HomeIcon,
   GlobeAltIcon,
-  SignalIcon,
+  MagnifyingGlassCircleIcon,
   XMarkIcon,
   BellIcon,
   ChevronDownIcon,
@@ -43,10 +43,10 @@ export default function Dashboard({ children }) {
       current: router.pathname === "/schedule",
     },
     {
-      name: "Activity",
-      href: "/activity",
-      icon: SignalIcon,
-      current: router.pathname === "/activity",
+      name: "Directory",
+      href: "/directory",
+      icon: MagnifyingGlassCircleIcon,
+      current: router.pathname === "/directory",
     },
     {
       name: "Domains",

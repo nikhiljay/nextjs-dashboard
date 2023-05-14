@@ -10,6 +10,10 @@ module.exports = {
       colors: {
         "vitalize-primary": "#7A7ED9",
         "vitalize-secondary": "#9194DD",
+        "vitalize-tertiary": "#E6EAFF",
+      },
+      height: {
+        "screen-wo-header": "calc(100vh - 4rem)", // 4rem is equivalent to 16 in Tailwind's spacing scale
       },
     },
   },
