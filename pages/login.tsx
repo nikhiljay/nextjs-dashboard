@@ -53,7 +53,7 @@ export default function Login() {
             <p className="mt-2 text-sm leading-6 text-gray-500">
               Not a Vitalize provider?{" "}
               <Link
-                href="#"
+                href="/signup"
                 className="font-semibold text-vitalize-primary hover:text-vitalize-secondary"
               >
                 Sign up today

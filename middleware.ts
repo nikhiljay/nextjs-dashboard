@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname === "/login") {
+  if (["/login", "/signup"].includes(req.nextUrl.pathname)) {
     return NextResponse.next();
   }
   // We need to create a response and hand it to the supabase client to be able to modify the response headers.

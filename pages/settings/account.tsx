@@ -129,6 +129,7 @@ export default function Account() {
                     full_name,
                     avatar_url: url,
                   });
+                  window.location.reload();
                 }}
               />
 
