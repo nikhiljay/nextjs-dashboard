@@ -122,9 +122,9 @@ export default function Account() {
                 uid={user?.id as string}
                 url={avatar_url}
                 size={150}
-                onUpload={(url) => {
+                onUpload={async (url) => {
                   setAvatarUrl(url);
-                  updateProfile({
+                  await updateProfile({
                     username,
                     full_name,
                     avatar_url: url,
