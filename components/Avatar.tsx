@@ -15,7 +15,7 @@ export default function Avatar({
   onUpload: (url: string) => void;
 }) {
   const supabase = useSupabaseClient<Database>();
-  const [avatarUrl, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
+  const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
@@ -70,35 +70,30 @@ export default function Avatar({
   };
 
   return (
-    <div>
-      {avatarUrl ? (
-        <img
-          src={avatarUrl}
-          alt="Avatar"
-          className="avatar image"
-          style={{ height: size, width: size }}
-        />
-      ) : (
-        <div
-          className="avatar no-image"
-          style={{ height: size, width: size }}
-        />
-      )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? "Uploading ..." : "Upload"}
+    <div className="col-span-full flex items-center gap-x-8">
+      <img
+        src={avatar_url || "/avatar_placeholder.png"}
+        alt=""
+        className="h-24 w-24 flex-none rounded-lg bg-gray-200 object-cover"
+      />
+      <div>
+        <label
+          htmlFor="single"
+          className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          Change Avatar
         </label>
         <input
-          style={{
-            visibility: "hidden",
-            position: "absolute",
-          }}
+          className="invisible absolute"
           type="file"
           id="single"
           accept="image/*"
           onChange={uploadAvatar}
           disabled={uploading}
         />
+        <p className="mt-2 text-xs leading-5 text-gray-600">
+          JPG, GIF or PNG. 1MB max.
+        </p>
       </div>
     </div>
   );

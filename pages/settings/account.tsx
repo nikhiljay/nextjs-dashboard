@@ -1,4 +1,9 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Database } from "../../types/supabase";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
+import Avatar from "../../components/Avatar";
+type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 const secondaryNavigation = [
   { name: "Account", href: "/settings/account", current: true },
@@ -9,6 +14,73 @@ const secondaryNavigation = [
 ];
 
 export default function Account() {
+  const user = useUser();
+  const supabase = useSupabaseClient<Database>();
+  const [full_name, setName] = useState<Profiles["full_name"]>(null);
+  const [username, setUsername] = useState<Profiles["username"]>(null);
+  const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (user) getProfile();
+  }, [user]);
+
+  async function getProfile() {
+    try {
+      if (!user) throw new Error("No user");
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select(`avatar_url, full_name, username`)
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setName(data.full_name);
+        setUsername(data.username);
+        setAvatarUrl(data.avatar_url);
+      }
+    } catch (error) {
+      alert("Error loading user data!");
+      console.log(error);
+    }
+  }
+
+  async function updateProfile({
+    avatar_url,
+    full_name,
+    username,
+  }: {
+    username: Profiles["username"];
+    full_name: Profiles["full_name"];
+    avatar_url: Profiles["avatar_url"];
+  }) {
+    try {
+      setLoading(true);
+      if (!user) throw new Error("No user");
+
+      const updates = {
+        id: user.id,
+        username,
+        full_name,
+        avatar_url,
+        updated_at: new Date().toISOString(),
+      };
+
+      let { error } = await supabase.from("profiles").upsert(updates);
+      if (error) throw error;
+      alert("Profile updated!");
+    } catch (error) {
+      alert("Error updating the data!");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <main>
       <header className="border-b border-gray-200">
@@ -46,56 +118,35 @@ export default function Account() {
 
           <form className="md:col-span-2">
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
-              <div className="col-span-full flex items-center gap-x-8">
-                <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                  className="h-24 w-24 flex-none rounded-lg bg-gray-200 object-cover"
-                />
-                <div>
-                  <button
-                    type="button"
-                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  >
-                    Change Avatar
-                  </button>
-                  <p className="mt-2 text-xs leading-5 text-gray-600">
-                    JPG, GIF or PNG. 1MB max.
-                  </p>
-                </div>
-              </div>
+              <Avatar
+                uid={user?.id as string}
+                url={avatar_url}
+                size={150}
+                onUpload={(url) => {
+                  setAvatarUrl(url);
+                  updateProfile({
+                    username,
+                    full_name,
+                    avatar_url: url,
+                  });
+                }}
+              />
 
-              <div className="sm:col-span-3">
+              <div className="col-span-full">
                 <label
-                  htmlFor="first-name"
+                  htmlFor="name"
                   className="block text-sm font-medium leading-6 text-gray-700"
                 >
-                  First name
+                  Full name
                 </label>
                 <div className="mt-2">
                   <input
+                    id="name"
+                    name="name"
                     type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-3">
-                <label
-                  htmlFor="last-name"
-                  className="block text-sm font-medium leading-6 text-gray-700"
-                >
-                  Last name
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
+                    autoComplete="name"
+                    value={full_name || ""}
+                    onChange={(e) => setName(e.target.value)}
                     className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -111,9 +162,9 @@ export default function Account() {
                 <div className="mt-2">
                   <input
                     id="email"
-                    name="email"
                     type="email"
-                    autoComplete="email"
+                    value={user?.email || ""}
+                    disabled
                     className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -132,6 +183,8 @@ export default function Account() {
                     name="username"
                     type="text"
                     autoComplete="username"
+                    value={username || ""}
+                    onChange={(e) => setUsername(e.target.value)}
                     className="block w-full rounded-md border-gray-300 shadow-sm py-1.5 text-gray-700 focus:ring-1 focus:ring-vitalize-secondary sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -161,6 +214,10 @@ export default function Account() {
             <div className="mt-8 flex">
               <button
                 type="submit"
+                onClick={() =>
+                  updateProfile({ username, full_name, avatar_url })
+                }
+                disabled={loading}
                 className="rounded-md bg-vitalize-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-vitalize-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vitalize-secondary"
               >
                 Save
