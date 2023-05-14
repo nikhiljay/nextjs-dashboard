@@ -424,8 +424,8 @@ export default function Directory() {
 
           {/* Team member list */}
           <div className="flow-root p-8 mb-8">
-            <dt className="text-sm font-medium text-gray-500 mb-2">Timeline</dt>
-            <ul role="list" className="-mb-8">
+            <dt className="text-sm font-medium text-gray-500 mb-4">Timeline</dt>
+            <ul role="list" className="-mb-8 px-3">
               {timeline.map((event, eventIdx) => (
                 <li key={event.id}>
                   <div className="relative pb-8">
