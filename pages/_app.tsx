@@ -15,17 +15,25 @@ function App({
   const router = useRouter();
   const [supabase] = useState(() => createBrowserSupabaseClient());
 
+  const isDashboardPage = (path: string) => {
+    const dashboardBasePaths = ["/home", "/schedule", "/settings"];
+    const dashboardPages = dashboardBasePaths.map(
+      (basePath) => new RegExp(`^${basePath}`)
+    );
+    return dashboardPages.some((pattern) => pattern.test(path));
+  };
+
   return (
     <SessionContextProvider
       supabaseClient={supabase}
       initialSession={pageProps.initialSession}
     >
-      {router.pathname === "/login" ? (
-        <Component {...pageProps} />
-      ) : (
+      {isDashboardPage(router.pathname) ? (
         <Dashboard>
           <Component {...pageProps} />
         </Dashboard>
+      ) : (
+        <Component {...pageProps} />
       )}
     </SessionContextProvider>
   );

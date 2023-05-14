@@ -1,11 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import Link from "next/link";
-import {
-  useUser,
-  useSupabaseClient,
-  Session,
-} from "@supabase/auth-helpers-react";
+import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import { Database } from "../types/supabase";
 import {
   ChartBarSquareIcon,
@@ -20,16 +16,19 @@ import {
 } from "@heroicons/react/24/outline";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
+type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Dashboard({ children }) {
+  const user = useUser();
   const router = useRouter();
   const supabase = useSupabaseClient<Database>();
+  const [name, setName] = useState<Profiles["full_name"]>(null);
+  const [avatarUrl, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
   const navigation = [
     {
       name: "Home",
@@ -62,13 +61,11 @@ export default function Dashboard({ children }) {
       current: router.pathname === "/usage",
     },
   ];
-
   const teams = [
     { id: 1, name: "Planetaria", href: "#", initial: "P", current: false },
     { id: 2, name: "Protocol", href: "#", initial: "P", current: false },
     { id: 3, name: "Tailwind Labs", href: "#", initial: "T", current: false },
   ];
-
   const userNavigation = [
     { name: "Settings", href: "/settings" },
     {
@@ -81,6 +78,50 @@ export default function Dashboard({ children }) {
       },
     },
   ];
+
+  useEffect(() => {
+    if (user) getProfile();
+  }, [user]);
+
+  async function getProfile() {
+    try {
+      if (!user) throw new Error("No user");
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select(`full_name, avatar_url`)
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setName(data.full_name);
+        if (data.avatar_url) {
+          downloadImage(data.avatar_url);
+        }
+      }
+    } catch (error) {
+      alert("Error loading user data!");
+      console.log(error);
+    }
+  }
+
+  async function downloadImage(path: string) {
+    try {
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .download(path);
+      if (error) {
+        throw error;
+      }
+      const url = URL.createObjectURL(data);
+      setAvatarUrl(url);
+    } catch (error) {
+      console.log("Error downloading image: ", error);
+    }
+  }
 
   return (
     <div>
@@ -372,7 +413,10 @@ export default function Dashboard({ children }) {
                   <span className="sr-only">Open user menu</span>
                   <img
                     className="h-8 w-8 rounded-full bg-gray-50"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src={
+                      avatarUrl ||
+                      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                    }
                     alt=""
                   />
                   <span className="hidden lg:flex lg:items-center">
@@ -380,7 +424,7 @@ export default function Dashboard({ children }) {
                       className="ml-4 text-sm font-semibold leading-6 text-gray-900"
                       aria-hidden="true"
                     >
-                      Tom Cook
+                      {name || "Vitalize User"}
                     </span>
                     <ChevronDownIcon
                       className="ml-2 h-5 w-5 text-gray-400"
