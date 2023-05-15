@@ -7,6 +7,7 @@ import {
   MapPinIcon,
 } from "@heroicons/react/20/solid";
 import { Menu, Transition } from "@headlessui/react";
+import Link from "next/link";
 
 const meetings = [
   {
