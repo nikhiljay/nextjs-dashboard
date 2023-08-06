@@ -178,7 +178,7 @@ export default function Schedule() {
                     day.isSelected && !day.isToday && "bg-gray-900"
                   )}
                 >
-                  {day.date.split("-").pop().replace(/^0/, "")}
+                  {day.date.split("-").pop()?.replace(/^0/, "")}
                 </time>
               </button>
             ))}
