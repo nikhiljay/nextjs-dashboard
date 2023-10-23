@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Database } from "../types/supabase";
+
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default function Avatar({
@@ -15,7 +16,7 @@ export default function Avatar({
   onUpload: (url: string) => void;
 }) {
   const supabase = useSupabaseClient<Database>();
-  const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
+  const [avatar_url, setAvatarUrl] = useState<string | null>(null); // Specify the type explicitly as string | null
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
@@ -33,13 +34,11 @@ export default function Avatar({
       const url = URL.createObjectURL(data);
       setAvatarUrl(url);
     } catch (error) {
-      console.log("Error downloading image: ", error);
+      console.error("Error downloading image:", error); // Changed console.log to console.error for error logging
     }
   }
 
-  const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (
-    event
-  ) => {
+  const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     try {
       setUploading(true);
 
@@ -63,11 +62,11 @@ export default function Avatar({
       onUpload(filePath);
     } catch (error) {
       alert("Error uploading avatar!");
-      console.log(error);
+      console.error(error); // Changed console.log to console.error for error logging
     } finally {
       setUploading(false);
     }
-  };
+  }
 
   return (
     <div className="col-span-full flex items-center gap-x-8">
@@ -79,7 +78,7 @@ export default function Avatar({
       <div>
         <label
           htmlFor="single"
-          className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover-bg-gray-50"
         >
           {uploading ? "Uploading..." : "Change Avatar"}
         </label>
@@ -92,7 +91,7 @@ export default function Avatar({
           disabled={uploading}
         />
         <p className="mt-2 text-xs leading-5 text-gray-600">
-          JPG, GIF or PNG. 1MB max.
+          JPG, GIF, or PNG. 1MB max.
         </p>
       </div>
     </div>
